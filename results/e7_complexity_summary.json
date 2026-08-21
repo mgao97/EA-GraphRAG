@@ -1,0 +1,74 @@
+{
+  "fixed_hop_1": {
+    "em": 0.75,
+    "f1": 0.925,
+    "n": 20,
+    "cost": {
+      "nodes": 195,
+      "edges": 180,
+      "tokens": 4132,
+      "retrieval_calls": 40
+    },
+    "elapsed_sec": 0.08506989479064941
+  },
+  "fixed_hop_2": {
+    "em": 0.75,
+    "f1": 0.925,
+    "n": 20,
+    "cost": {
+      "nodes": 259,
+      "edges": 180,
+      "tokens": 5419,
+      "retrieval_calls": 40
+    },
+    "elapsed_sec": 0.0874330997467041
+  },
+  "fixed_hop_3": {
+    "em": 0.75,
+    "f1": 0.925,
+    "n": 20,
+    "cost": {
+      "nodes": 290,
+      "edges": 180,
+      "tokens": 6050,
+      "retrieval_calls": 40
+    },
+    "elapsed_sec": 0.08662104606628418
+  },
+  "fixed_hop_4": {
+    "em": 0.75,
+    "f1": 0.925,
+    "n": 20,
+    "cost": {
+      "nodes": 303,
+      "edges": 180,
+      "tokens": 6268,
+      "retrieval_calls": 40
+    },
+    "elapsed_sec": 0.09111976623535156
+  },
+  "graphrag": {
+    "em": 0.75,
+    "f1": 0.925,
+    "n": 20,
+    "cost": {
+      "nodes": 259,
+      "edges": 180,
+      "tokens": 5419,
+      "retrieval_calls": 40
+    },
+    "elapsed_sec": 0.08445978164672852
+  },
+  "ea_graphrag": {
+    "em": 0.75,
+    "f1": 0.925,
+    "n": 20,
+    "cost": {
+      "nodes": 419,
+      "edges": 447,
+      "tokens": 8276,
+      "retrieval_calls": 106
+    },
+    "elapsed_sec": 0.3464021682739258
+  }
+}

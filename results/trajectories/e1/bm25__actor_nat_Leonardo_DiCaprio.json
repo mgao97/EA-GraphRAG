@@ -1,0 +1,85 @@
+{
+  "qid": "actor_nat_Leonardo_DiCaprio",
+  "question": "Which country is the actor Leonardo DiCaprio from?",
+  "gold_answer": "United States",
+  "method": "bm25",
+  "steps": [
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "passage::13",
+        "passage::9",
+        "passage::0",
+        "passage::18",
+        "passage::11"
+      ],
+      "evidence_edges": [],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 1.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "RETRIEVE",
+      "action_target": [
+        "Biography of Leonardo DiCaprio",
+        "Biography of Tom Hanks",
+        "Article about The Dark Knight",
+        "Article about The Matrix",
+        "Article about The Shining"
+      ],
+      "newly_retrieved_nodes": [
+        "passage::13",
+        "passage::9",
+        "passage::0",
+        "passage::18",
+        "passage::11"
+      ],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 14.12424397572021,
+      "token_count": 140
+    },
+    {
+      "step": 1,
+      "evidence_nodes": [
+        "passage::13",
+        "passage::9",
+        "passage::0",
+        "passage::18",
+        "passage::11"
+      ],
+      "evidence_edges": [],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "STOP",
+      "action_target": [],
+      "newly_retrieved_nodes": [],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 0.0,
+      "token_count": 0
+    }
+  ],
+  "final_answer": "United States",
+  "final_evidence": [
+    "passage::13",
+    "passage::9",
+    "passage::0",
+    "passage::18",
+    "passage::11"
+  ],
+  "total_cost": {
+    "nodes": 5,
+    "edges": 0,
+    "tokens": 140,
+    "retrieval_calls": 1,
+    "iterations": 2
+  },
+  "stop_reason": "bm25_topk_done",
+  "metadata": {}
+}

@@ -1,0 +1,112 @@
+{
+  "qid": "bridge_author_nat_Dracula",
+  "question": "The author of Dracula was from which country?",
+  "gold_answer": "United Kingdom",
+  "method": "react_graphrag",
+  "steps": [
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "ent::Dracula",
+        "ent::The Dark Knight",
+        "ent::Mary Shelley",
+        "ent::Christopher Nolan",
+        "ent::The Matrix"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "RETRIEVE",
+      "action_target": [
+        "ent::Dracula",
+        "ent::The Dark Knight",
+        "ent::Mary Shelley",
+        "ent::Christopher Nolan",
+        "ent::The Matrix"
+      ],
+      "newly_retrieved_nodes": [
+        "ent::Dracula",
+        "ent::The Dark Knight",
+        "ent::Mary Shelley",
+        "ent::Christopher Nolan",
+        "ent::The Matrix"
+      ],
+      "newly_retrieved_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ]
+      ],
+      "retrieval_score": 0.1546976834535599,
+      "token_count": 116
+    },
+    {
+      "step": 1,
+      "evidence_nodes": [
+        "ent::Dracula",
+        "ent::The Dark Knight",
+        "ent::Mary Shelley",
+        "ent::Christopher Nolan",
+        "ent::The Matrix"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "STOP",
+      "action_target": [],
+      "newly_retrieved_nodes": [],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 0.0,
+      "token_count": 116
+    }
+  ],
+  "final_answer": "United Kingdom",
+  "final_evidence": [
+    "ent::Dracula",
+    "ent::The Dark Knight",
+    "ent::Mary Shelley",
+    "ent::Christopher Nolan",
+    "ent::The Matrix"
+  ],
+  "total_cost": {
+    "nodes": 5,
+    "edges": 2,
+    "tokens": 116,
+    "retrieval_calls": 1,
+    "iterations": 2
+  },
+  "stop_reason": "react_stop",
+  "metadata": {}
+}

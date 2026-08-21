@@ -1,0 +1,136 @@
+{
+  "qid": "bridge_dir_nat_Interstellar",
+  "question": "Which director directed Interstellar, and what country is that director from?",
+  "gold_answer": "United Kingdom",
+  "method": "react_graphrag",
+  "steps": [
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "ent::Interstellar",
+        "ent::Christopher Nolan",
+        "ent::United Kingdom",
+        "ent::United States",
+        "ent::Lana Wachowski"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::Interstellar",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "RETRIEVE",
+      "action_target": [
+        "ent::Interstellar",
+        "ent::Christopher Nolan",
+        "ent::United Kingdom",
+        "ent::United States",
+        "ent::Lana Wachowski"
+      ],
+      "newly_retrieved_nodes": [
+        "ent::Interstellar",
+        "ent::Christopher Nolan",
+        "ent::United Kingdom",
+        "ent::United States",
+        "ent::Lana Wachowski"
+      ],
+      "newly_retrieved_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::Interstellar",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ]
+      ],
+      "retrieval_score": 0.1493801325559616,
+      "token_count": 103
+    },
+    {
+      "step": 1,
+      "evidence_nodes": [
+        "ent::Interstellar",
+        "ent::Christopher Nolan",
+        "ent::United Kingdom",
+        "ent::United States",
+        "ent::Lana Wachowski"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::Interstellar",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "STOP",
+      "action_target": [],
+      "newly_retrieved_nodes": [],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 0.0,
+      "token_count": 103
+    }
+  ],
+  "final_answer": "United Kingdom",
+  "final_evidence": [
+    "ent::Interstellar",
+    "ent::Christopher Nolan",
+    "ent::United Kingdom",
+    "ent::United States",
+    "ent::Lana Wachowski"
+  ],
+  "total_cost": {
+    "nodes": 5,
+    "edges": 4,
+    "tokens": 103,
+    "retrieval_calls": 1,
+    "iterations": 2
+  },
+  "stop_reason": "react_stop",
+  "metadata": {}
+}

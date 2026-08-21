@@ -1,0 +1,24 @@
+# --- Data (large / regenerable) ---
+data/
+
+# --- Python virtual environment ---
+.venv/
+venv/
+
+# --- Local caches & logs ---
+.cache/
+logs/
+
+# --- Python caches / build artifacts ---
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+
+# --- OS / editor junk ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

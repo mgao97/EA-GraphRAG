@@ -1,0 +1,85 @@
+{
+  "qid": "bridge_dir_nat_Pulp_Fiction",
+  "question": "Which director directed Pulp Fiction, and what country is that director from?",
+  "gold_answer": "United States",
+  "method": "bm25",
+  "steps": [
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "passage::14",
+        "passage::19",
+        "passage::23",
+        "passage::1",
+        "passage::4"
+      ],
+      "evidence_edges": [],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 1.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "RETRIEVE",
+      "action_target": [
+        "Article about Pulp Fiction",
+        "Article about Pulp Fiction",
+        "Biography of Mary Shelley",
+        "Biography of Christopher Nolan",
+        "Biography of Stephen King"
+      ],
+      "newly_retrieved_nodes": [
+        "passage::14",
+        "passage::19",
+        "passage::23",
+        "passage::1",
+        "passage::4"
+      ],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 8.523109483225833,
+      "token_count": 116
+    },
+    {
+      "step": 1,
+      "evidence_nodes": [
+        "passage::14",
+        "passage::19",
+        "passage::23",
+        "passage::1",
+        "passage::4"
+      ],
+      "evidence_edges": [],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "STOP",
+      "action_target": [],
+      "newly_retrieved_nodes": [],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 0.0,
+      "token_count": 0
+    }
+  ],
+  "final_answer": "United Kingdom",
+  "final_evidence": [
+    "passage::14",
+    "passage::19",
+    "passage::23",
+    "passage::1",
+    "passage::4"
+  ],
+  "total_cost": {
+    "nodes": 5,
+    "edges": 0,
+    "tokens": 116,
+    "retrieval_calls": 1,
+    "iterations": 2
+  },
+  "stop_reason": "bm25_topk_done",
+  "metadata": {}
+}

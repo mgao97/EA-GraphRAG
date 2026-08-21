@@ -1,0 +1,271 @@
+{
+  "qid": "bridge_author_nat_The_Shining",
+  "question": "The author of The Shining was from which country?",
+  "gold_answer": "United States",
+  "method": "fixed_hop_2",
+  "steps": [
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "ent::The Shining",
+        "ent::The Dark Knight",
+        "ent::The Matrix",
+        "ent::Christopher Nolan",
+        "ent::Inception"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Inception",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "RETRIEVE",
+      "action_target": [
+        "ent::The Shining",
+        "ent::The Dark Knight",
+        "ent::The Matrix",
+        "ent::Christopher Nolan",
+        "ent::Inception"
+      ],
+      "newly_retrieved_nodes": [
+        "ent::The Shining",
+        "ent::The Dark Knight",
+        "ent::The Matrix",
+        "ent::Christopher Nolan",
+        "ent::Inception"
+      ],
+      "newly_retrieved_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Inception",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ]
+      ],
+      "retrieval_score": 0.17605469971895218,
+      "token_count": 108
+    },
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "ent::The Shining",
+        "ent::The Dark Knight",
+        "ent::The Matrix",
+        "ent::Christopher Nolan",
+        "ent::Inception",
+        "ent::United States",
+        "ent::Stephen King",
+        "ent::United Kingdom",
+        "ent::Interstellar",
+        "ent::Lana Wachowski",
+        "ent::Bram Stoker",
+        "ent::Mary Shelley"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Inception",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::The Shining",
+          "ent::Stephen King"
+        ],
+        [
+          "ent::The Matrix",
+          "ent::Lana Wachowski"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "EXPAND",
+      "action_target": [],
+      "newly_retrieved_nodes": [
+        "ent::United States",
+        "ent::Stephen King",
+        "ent::United Kingdom",
+        "ent::Interstellar",
+        "ent::Lana Wachowski",
+        "ent::Bram Stoker",
+        "ent::Mary Shelley"
+      ],
+      "newly_retrieved_edges": [
+        [
+          "ent::The Shining",
+          "ent::Stephen King"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::The Matrix",
+          "ent::Lana Wachowski"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::Inception",
+          "ent::Christopher Nolan"
+        ]
+      ],
+      "retrieval_score": 0.0,
+      "token_count": 261
+    },
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "ent::The Shining",
+        "ent::The Dark Knight",
+        "ent::The Matrix",
+        "ent::Christopher Nolan",
+        "ent::Inception",
+        "ent::United States",
+        "ent::Stephen King",
+        "ent::United Kingdom",
+        "ent::Interstellar",
+        "ent::Lana Wachowski",
+        "ent::Bram Stoker",
+        "ent::Mary Shelley"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Inception",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::The Shining",
+          "ent::Stephen King"
+        ],
+        [
+          "ent::The Matrix",
+          "ent::Lana Wachowski"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "STOP",
+      "action_target": [],
+      "newly_retrieved_nodes": [],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 0.0,
+      "token_count": 261
+    }
+  ],
+  "final_answer": "United Kingdom",
+  "final_evidence": [
+    "ent::The Shining",
+    "ent::The Dark Knight",
+    "ent::The Matrix",
+    "ent::Christopher Nolan",
+    "ent::Inception",
+    "ent::United States",
+    "ent::Stephen King",
+    "ent::United Kingdom",
+    "ent::Interstellar",
+    "ent::Lana Wachowski",
+    "ent::Bram Stoker",
+    "ent::Mary Shelley"
+  ],
+  "total_cost": {
+    "nodes": 12,
+    "edges": 8,
+    "tokens": 261,
+    "retrieval_calls": 2,
+    "iterations": 3
+  },
+  "stop_reason": "fixed_hops_done",
+  "metadata": {}
+}

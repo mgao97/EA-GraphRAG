@@ -1,0 +1,15 @@
+# Core scientific stack
+numpy>=1.24
+networkx>=3.0
+pyyaml>=6.0
+
+# BM25 baseline (lexical retrieval)
+rank_bm25>=0.2
+
+# Optional, only needed for plotting figures
+# matplotlib>=3.7
+# pandas>=2.0
+
+# Optional, only needed for real embeddings / LLMs
+# sentence-transformers>=2.2
+# openai>=1.0

@@ -1,0 +1,85 @@
+{
+  "qid": "bridge_dir_nat_The_Dark_Knight",
+  "question": "Which director directed The Dark Knight, and what country is that director from?",
+  "gold_answer": "United Kingdom",
+  "method": "bm25",
+  "steps": [
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "passage::0",
+        "passage::12",
+        "passage::18",
+        "passage::11",
+        "passage::23"
+      ],
+      "evidence_edges": [],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 1.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "RETRIEVE",
+      "action_target": [
+        "Article about The Dark Knight",
+        "Article about The Dark Knight",
+        "Article about The Matrix",
+        "Article about The Shining",
+        "Biography of Mary Shelley"
+      ],
+      "newly_retrieved_nodes": [
+        "passage::0",
+        "passage::12",
+        "passage::18",
+        "passage::11",
+        "passage::23"
+      ],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 10.008204605320458,
+      "token_count": 152
+    },
+    {
+      "step": 1,
+      "evidence_nodes": [
+        "passage::0",
+        "passage::12",
+        "passage::18",
+        "passage::11",
+        "passage::23"
+      ],
+      "evidence_edges": [],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "STOP",
+      "action_target": [],
+      "newly_retrieved_nodes": [],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 0.0,
+      "token_count": 0
+    }
+  ],
+  "final_answer": "United Kingdom",
+  "final_evidence": [
+    "passage::0",
+    "passage::12",
+    "passage::18",
+    "passage::11",
+    "passage::23"
+  ],
+  "total_cost": {
+    "nodes": 5,
+    "edges": 0,
+    "tokens": 152,
+    "retrieval_calls": 1,
+    "iterations": 2
+  },
+  "stop_reason": "bm25_topk_done",
+  "metadata": {}
+}

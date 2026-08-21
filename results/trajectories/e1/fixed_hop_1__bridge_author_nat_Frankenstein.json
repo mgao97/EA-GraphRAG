@@ -1,0 +1,271 @@
+{
+  "qid": "bridge_author_nat_Frankenstein",
+  "question": "The author of Frankenstein was from which country?",
+  "gold_answer": "United Kingdom",
+  "method": "fixed_hop_1",
+  "steps": [
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "ent::Frankenstein",
+        "ent::The Dark Knight",
+        "ent::Mary Shelley",
+        "ent::Christopher Nolan",
+        "ent::The Matrix"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Mary Shelley",
+          "ent::Frankenstein"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::Frankenstein",
+          "ent::Mary Shelley"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "RETRIEVE",
+      "action_target": [
+        "ent::Frankenstein",
+        "ent::The Dark Knight",
+        "ent::Mary Shelley",
+        "ent::Christopher Nolan",
+        "ent::The Matrix"
+      ],
+      "newly_retrieved_nodes": [
+        "ent::Frankenstein",
+        "ent::The Dark Knight",
+        "ent::Mary Shelley",
+        "ent::Christopher Nolan",
+        "ent::The Matrix"
+      ],
+      "newly_retrieved_edges": [
+        [
+          "ent::Mary Shelley",
+          "ent::Frankenstein"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::Frankenstein",
+          "ent::Mary Shelley"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ]
+      ],
+      "retrieval_score": 0.1546976834535599,
+      "token_count": 116
+    },
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "ent::Frankenstein",
+        "ent::The Dark Knight",
+        "ent::Mary Shelley",
+        "ent::Christopher Nolan",
+        "ent::The Matrix",
+        "ent::United Kingdom",
+        "ent::Inception",
+        "ent::Interstellar",
+        "ent::Lana Wachowski"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Mary Shelley",
+          "ent::Frankenstein"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::Frankenstein",
+          "ent::Mary Shelley"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Mary Shelley",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::The Matrix",
+          "ent::Lana Wachowski"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "EXPAND",
+      "action_target": [],
+      "newly_retrieved_nodes": [
+        "ent::United Kingdom",
+        "ent::Inception",
+        "ent::Interstellar",
+        "ent::Lana Wachowski"
+      ],
+      "newly_retrieved_edges": [
+        [
+          "ent::Frankenstein",
+          "ent::Mary Shelley"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Mary Shelley",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Mary Shelley",
+          "ent::Frankenstein"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Matrix",
+          "ent::Lana Wachowski"
+        ]
+      ],
+      "retrieval_score": 0.0,
+      "token_count": 185
+    },
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "ent::Frankenstein",
+        "ent::The Dark Knight",
+        "ent::Mary Shelley",
+        "ent::Christopher Nolan",
+        "ent::The Matrix",
+        "ent::United Kingdom",
+        "ent::Inception",
+        "ent::Interstellar",
+        "ent::Lana Wachowski"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Mary Shelley",
+          "ent::Frankenstein"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::Frankenstein",
+          "ent::Mary Shelley"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Mary Shelley",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::The Matrix",
+          "ent::Lana Wachowski"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "STOP",
+      "action_target": [],
+      "newly_retrieved_nodes": [],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 0.0,
+      "token_count": 185
+    }
+  ],
+  "final_answer": "United Kingdom",
+  "final_evidence": [
+    "ent::Frankenstein",
+    "ent::The Dark Knight",
+    "ent::Mary Shelley",
+    "ent::Christopher Nolan",
+    "ent::The Matrix",
+    "ent::United Kingdom",
+    "ent::Inception",
+    "ent::Interstellar",
+    "ent::Lana Wachowski"
+  ],
+  "total_cost": {
+    "nodes": 9,
+    "edges": 9,
+    "tokens": 185,
+    "retrieval_calls": 2,
+    "iterations": 3
+  },
+  "stop_reason": "fixed_hops_done",
+  "metadata": {}
+}

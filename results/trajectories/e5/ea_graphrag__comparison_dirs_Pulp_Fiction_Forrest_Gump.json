@@ -1,0 +1,858 @@
+{
+  "qid": "comparison_dirs_Pulp_Fiction_Forrest_Gump",
+  "question": "Which director directed both Pulp Fiction and Forrest Gump?",
+  "gold_answer": "Quentin Tarantino and Robert Zemeckis",
+  "method": "ea_graphrag",
+  "steps": [
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "ent::Forrest Gump",
+        "ent::Pulp Fiction",
+        "ent::Robert Zemeckis",
+        "ent::Interstellar",
+        "ent::Many"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Robert Zemeckis",
+          "ent::Forrest Gump"
+        ],
+        [
+          "ent::Forrest Gump",
+          "ent::Robert Zemeckis"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 1.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 1.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "RETRIEVE",
+      "action_target": [
+        "ent::Forrest Gump",
+        "ent::Pulp Fiction",
+        "ent::Robert Zemeckis",
+        "ent::Interstellar",
+        "ent::Many"
+      ],
+      "newly_retrieved_nodes": [
+        "ent::Forrest Gump",
+        "ent::Pulp Fiction",
+        "ent::Robert Zemeckis",
+        "ent::Interstellar",
+        "ent::Many"
+      ],
+      "newly_retrieved_edges": [
+        [
+          "ent::Robert Zemeckis",
+          "ent::Forrest Gump"
+        ],
+        [
+          "ent::Forrest Gump",
+          "ent::Robert Zemeckis"
+        ]
+      ],
+      "retrieval_score": 0.20562343001365663,
+      "token_count": 102
+    },
+    {
+      "step": 1,
+      "evidence_nodes": [
+        "ent::Forrest Gump",
+        "ent::Pulp Fiction",
+        "ent::Robert Zemeckis",
+        "ent::Interstellar",
+        "ent::Many",
+        "ent::Quentin Tarantino",
+        "ent::United States",
+        "ent::Inception",
+        "ent::United Kingdom",
+        "ent::Christopher Nolan",
+        "ent::The Dark Knight",
+        "ent::Some"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Robert Zemeckis",
+          "ent::Forrest Gump"
+        ],
+        [
+          "ent::Forrest Gump",
+          "ent::Robert Zemeckis"
+        ],
+        [
+          "ent::Pulp Fiction",
+          "ent::Quentin Tarantino"
+        ],
+        [
+          "ent::Interstellar",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Many",
+          "ent::Some"
+        ]
+      ],
+      "semantic_score": 0.20562343299388885,
+      "structural_gain": 0.9715853539528604,
+      "structural_entropy": 0.9609640474406225,
+      "reasoning_coverage": 1.0,
+      "consistency_score": 1.0,
+      "sufficiency_score": 1.0,
+      "sufficient": true,
+      "action": "EXPAND",
+      "action_target": [],
+      "newly_retrieved_nodes": [
+        "ent::Quentin Tarantino",
+        "ent::United States",
+        "ent::Inception",
+        "ent::United Kingdom",
+        "ent::Christopher Nolan",
+        "ent::The Dark Knight",
+        "ent::Some"
+      ],
+      "newly_retrieved_edges": [
+        [
+          "ent::Forrest Gump",
+          "ent::Robert Zemeckis"
+        ],
+        [
+          "ent::Pulp Fiction",
+          "ent::Quentin Tarantino"
+        ],
+        [
+          "ent::Robert Zemeckis",
+          "ent::Forrest Gump"
+        ],
+        [
+          "ent::Interstellar",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Many",
+          "ent::Some"
+        ]
+      ],
+      "retrieval_score": 0.0,
+      "token_count": 245
+    },
+    {
+      "step": 2,
+      "evidence_nodes": [
+        "ent::Forrest Gump",
+        "ent::Pulp Fiction",
+        "ent::Robert Zemeckis",
+        "ent::Interstellar",
+        "ent::Many",
+        "ent::Quentin Tarantino",
+        "ent::United States",
+        "ent::Inception",
+        "ent::United Kingdom",
+        "ent::Christopher Nolan",
+        "ent::The Dark Knight",
+        "ent::Some",
+        "ent::Tom Hanks",
+        "ent::Stephen King",
+        "ent::Leonardo DiCaprio",
+        "ent::The Shining",
+        "ent::Bram Stoker",
+        "ent::Dracula",
+        "ent::Mary Shelley",
+        "ent::Frankenstein"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Robert Zemeckis",
+          "ent::Forrest Gump"
+        ],
+        [
+          "ent::Forrest Gump",
+          "ent::Robert Zemeckis"
+        ],
+        [
+          "ent::Pulp Fiction",
+          "ent::Quentin Tarantino"
+        ],
+        [
+          "ent::Interstellar",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Many",
+          "ent::Some"
+        ],
+        [
+          "ent::Quentin Tarantino",
+          "ent::Pulp Fiction"
+        ],
+        [
+          "ent::Quentin Tarantino",
+          "ent::United States"
+        ],
+        [
+          "ent::United States",
+          "ent::Tom Hanks"
+        ],
+        [
+          "ent::United States",
+          "ent::Stephen King"
+        ],
+        [
+          "ent::United States",
+          "ent::Leonardo DiCaprio"
+        ],
+        [
+          "ent::United States",
+          "ent::Quentin Tarantino"
+        ],
+        [
+          "ent::Inception",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Bram Stoker"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Mary Shelley"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Some",
+          "ent::Many"
+        ]
+      ],
+      "semantic_score": 0.20562343299388885,
+      "structural_gain": 0.42972958342876283,
+      "structural_entropy": 0.9111886696776256,
+      "reasoning_coverage": 1.0,
+      "consistency_score": 1.0,
+      "sufficiency_score": 1.0,
+      "sufficient": true,
+      "action": "EXPAND",
+      "action_target": [],
+      "newly_retrieved_nodes": [
+        "ent::Tom Hanks",
+        "ent::Stephen King",
+        "ent::Leonardo DiCaprio",
+        "ent::The Shining",
+        "ent::Bram Stoker",
+        "ent::Dracula",
+        "ent::Mary Shelley",
+        "ent::Frankenstein"
+      ],
+      "newly_retrieved_edges": [
+        [
+          "ent::Forrest Gump",
+          "ent::Robert Zemeckis"
+        ],
+        [
+          "ent::Pulp Fiction",
+          "ent::Quentin Tarantino"
+        ],
+        [
+          "ent::Robert Zemeckis",
+          "ent::Forrest Gump"
+        ],
+        [
+          "ent::Interstellar",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Many",
+          "ent::Some"
+        ],
+        [
+          "ent::Quentin Tarantino",
+          "ent::Pulp Fiction"
+        ],
+        [
+          "ent::Quentin Tarantino",
+          "ent::United States"
+        ],
+        [
+          "ent::United States",
+          "ent::Tom Hanks"
+        ],
+        [
+          "ent::United States",
+          "ent::Stephen King"
+        ],
+        [
+          "ent::United States",
+          "ent::Leonardo DiCaprio"
+        ],
+        [
+          "ent::United States",
+          "ent::Quentin Tarantino"
+        ],
+        [
+          "ent::Inception",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Bram Stoker"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Mary Shelley"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Some",
+          "ent::Many"
+        ]
+      ],
+      "retrieval_score": 0.0,
+      "token_count": 405
+    },
+    {
+      "step": 3,
+      "evidence_nodes": [
+        "ent::Forrest Gump",
+        "ent::Pulp Fiction",
+        "ent::Robert Zemeckis",
+        "ent::Interstellar",
+        "ent::Many",
+        "ent::Quentin Tarantino",
+        "ent::United States",
+        "ent::Inception",
+        "ent::United Kingdom",
+        "ent::Christopher Nolan",
+        "ent::The Dark Knight",
+        "ent::Some",
+        "ent::Tom Hanks",
+        "ent::Stephen King",
+        "ent::Leonardo DiCaprio",
+        "ent::The Shining",
+        "ent::Bram Stoker",
+        "ent::Dracula",
+        "ent::Mary Shelley",
+        "ent::Frankenstein"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Robert Zemeckis",
+          "ent::Forrest Gump"
+        ],
+        [
+          "ent::Forrest Gump",
+          "ent::Robert Zemeckis"
+        ],
+        [
+          "ent::Pulp Fiction",
+          "ent::Quentin Tarantino"
+        ],
+        [
+          "ent::Interstellar",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Many",
+          "ent::Some"
+        ],
+        [
+          "ent::Quentin Tarantino",
+          "ent::Pulp Fiction"
+        ],
+        [
+          "ent::Quentin Tarantino",
+          "ent::United States"
+        ],
+        [
+          "ent::United States",
+          "ent::Tom Hanks"
+        ],
+        [
+          "ent::United States",
+          "ent::Stephen King"
+        ],
+        [
+          "ent::United States",
+          "ent::Leonardo DiCaprio"
+        ],
+        [
+          "ent::United States",
+          "ent::Quentin Tarantino"
+        ],
+        [
+          "ent::Inception",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Bram Stoker"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Mary Shelley"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Some",
+          "ent::Many"
+        ],
+        [
+          "ent::Tom Hanks",
+          "ent::United States"
+        ],
+        [
+          "ent::Stephen King",
+          "ent::The Shining"
+        ],
+        [
+          "ent::Stephen King",
+          "ent::United States"
+        ],
+        [
+          "ent::Leonardo DiCaprio",
+          "ent::United States"
+        ],
+        [
+          "ent::The Shining",
+          "ent::Stephen King"
+        ],
+        [
+          "ent::Bram Stoker",
+          "ent::Dracula"
+        ],
+        [
+          "ent::Bram Stoker",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Dracula",
+          "ent::Bram Stoker"
+        ],
+        [
+          "ent::Mary Shelley",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Mary Shelley",
+          "ent::Frankenstein"
+        ],
+        [
+          "ent::Frankenstein",
+          "ent::Mary Shelley"
+        ]
+      ],
+      "semantic_score": 0.20562343299388885,
+      "structural_gain": 0.4321112390048544,
+      "structural_entropy": 0.8624230069037316,
+      "reasoning_coverage": 1.0,
+      "consistency_score": 1.0,
+      "sufficiency_score": 1.0,
+      "sufficient": true,
+      "action": "EXPAND",
+      "action_target": [],
+      "newly_retrieved_nodes": [],
+      "newly_retrieved_edges": [
+        [
+          "ent::Forrest Gump",
+          "ent::Robert Zemeckis"
+        ],
+        [
+          "ent::Pulp Fiction",
+          "ent::Quentin Tarantino"
+        ],
+        [
+          "ent::Robert Zemeckis",
+          "ent::Forrest Gump"
+        ],
+        [
+          "ent::Interstellar",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Many",
+          "ent::Some"
+        ],
+        [
+          "ent::Quentin Tarantino",
+          "ent::Pulp Fiction"
+        ],
+        [
+          "ent::Quentin Tarantino",
+          "ent::United States"
+        ],
+        [
+          "ent::United States",
+          "ent::Tom Hanks"
+        ],
+        [
+          "ent::United States",
+          "ent::Stephen King"
+        ],
+        [
+          "ent::United States",
+          "ent::Leonardo DiCaprio"
+        ],
+        [
+          "ent::United States",
+          "ent::Quentin Tarantino"
+        ],
+        [
+          "ent::Inception",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Bram Stoker"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Mary Shelley"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Some",
+          "ent::Many"
+        ],
+        [
+          "ent::Tom Hanks",
+          "ent::United States"
+        ],
+        [
+          "ent::Stephen King",
+          "ent::The Shining"
+        ],
+        [
+          "ent::Stephen King",
+          "ent::United States"
+        ],
+        [
+          "ent::Leonardo DiCaprio",
+          "ent::United States"
+        ],
+        [
+          "ent::The Shining",
+          "ent::Stephen King"
+        ],
+        [
+          "ent::Bram Stoker",
+          "ent::Dracula"
+        ],
+        [
+          "ent::Bram Stoker",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Dracula",
+          "ent::Bram Stoker"
+        ],
+        [
+          "ent::Mary Shelley",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Mary Shelley",
+          "ent::Frankenstein"
+        ],
+        [
+          "ent::Frankenstein",
+          "ent::Mary Shelley"
+        ]
+      ],
+      "retrieval_score": 0.0,
+      "token_count": 405
+    },
+    {
+      "step": 3,
+      "evidence_nodes": [
+        "ent::Forrest Gump",
+        "ent::Pulp Fiction",
+        "ent::Robert Zemeckis",
+        "ent::Interstellar",
+        "ent::Many",
+        "ent::Quentin Tarantino",
+        "ent::United States",
+        "ent::Inception",
+        "ent::United Kingdom",
+        "ent::Christopher Nolan",
+        "ent::The Dark Knight",
+        "ent::Some",
+        "ent::Tom Hanks",
+        "ent::Stephen King",
+        "ent::Leonardo DiCaprio",
+        "ent::The Shining",
+        "ent::Bram Stoker",
+        "ent::Dracula",
+        "ent::Mary Shelley",
+        "ent::Frankenstein"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Robert Zemeckis",
+          "ent::Forrest Gump"
+        ],
+        [
+          "ent::Forrest Gump",
+          "ent::Robert Zemeckis"
+        ],
+        [
+          "ent::Pulp Fiction",
+          "ent::Quentin Tarantino"
+        ],
+        [
+          "ent::Interstellar",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Many",
+          "ent::Some"
+        ],
+        [
+          "ent::Quentin Tarantino",
+          "ent::Pulp Fiction"
+        ],
+        [
+          "ent::Quentin Tarantino",
+          "ent::United States"
+        ],
+        [
+          "ent::United States",
+          "ent::Tom Hanks"
+        ],
+        [
+          "ent::United States",
+          "ent::Stephen King"
+        ],
+        [
+          "ent::United States",
+          "ent::Leonardo DiCaprio"
+        ],
+        [
+          "ent::United States",
+          "ent::Quentin Tarantino"
+        ],
+        [
+          "ent::Inception",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Bram Stoker"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Mary Shelley"
+        ],
+        [
+          "ent::United Kingdom",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Some",
+          "ent::Many"
+        ],
+        [
+          "ent::Tom Hanks",
+          "ent::United States"
+        ],
+        [
+          "ent::Stephen King",
+          "ent::The Shining"
+        ],
+        [
+          "ent::Stephen King",
+          "ent::United States"
+        ],
+        [
+          "ent::Leonardo DiCaprio",
+          "ent::United States"
+        ],
+        [
+          "ent::The Shining",
+          "ent::Stephen King"
+        ],
+        [
+          "ent::Bram Stoker",
+          "ent::Dracula"
+        ],
+        [
+          "ent::Bram Stoker",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Dracula",
+          "ent::Bram Stoker"
+        ],
+        [
+          "ent::Mary Shelley",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Mary Shelley",
+          "ent::Frankenstein"
+        ],
+        [
+          "ent::Frankenstein",
+          "ent::Mary Shelley"
+        ]
+      ],
+      "semantic_score": 0.20562343299388885,
+      "structural_gain": 0.4321112390048544,
+      "structural_entropy": 0.8624230069037316,
+      "reasoning_coverage": 1.0,
+      "consistency_score": 1.0,
+      "sufficiency_score": 1.0,
+      "sufficient": true,
+      "action": "STOP",
+      "action_target": [],
+      "newly_retrieved_nodes": [],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 0.0,
+      "token_count": 405
+    }
+  ],
+  "final_answer": "Robert Zemeckis and Quentin Tarantino",
+  "final_evidence": [
+    "ent::Forrest Gump",
+    "ent::Pulp Fiction",
+    "ent::Robert Zemeckis",
+    "ent::Interstellar",
+    "ent::Many",
+    "ent::Quentin Tarantino",
+    "ent::United States",
+    "ent::Inception",
+    "ent::United Kingdom",
+    "ent::Christopher Nolan",
+    "ent::The Dark Knight",
+    "ent::Some",
+    "ent::Tom Hanks",
+    "ent::Stephen King",
+    "ent::Leonardo DiCaprio",
+    "ent::The Shining",
+    "ent::Bram Stoker",
+    "ent::Dracula",
+    "ent::Mary Shelley",
+    "ent::Frankenstein"
+  ],
+  "total_cost": {
+    "nodes": 20,
+    "edges": 32,
+    "tokens": 405,
+    "retrieval_calls": 4,
+    "iterations": 5
+  },
+  "stop_reason": "no_new_evidence",
+  "metadata": {}
+}

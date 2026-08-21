@@ -1,0 +1,259 @@
+{
+  "qid": "comparison_dirs_The_Dark_Knight_Interstellar",
+  "question": "Which director directed both The Dark Knight and Interstellar?",
+  "gold_answer": "Christopher Nolan",
+  "method": "fixed_hop_2",
+  "steps": [
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "ent::The Dark Knight",
+        "ent::Christopher Nolan",
+        "ent::Lana Wachowski",
+        "ent::Many",
+        "ent::Robert Zemeckis"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "RETRIEVE",
+      "action_target": [
+        "ent::The Dark Knight",
+        "ent::Christopher Nolan",
+        "ent::Lana Wachowski",
+        "ent::Many",
+        "ent::Robert Zemeckis"
+      ],
+      "newly_retrieved_nodes": [
+        "ent::The Dark Knight",
+        "ent::Christopher Nolan",
+        "ent::Lana Wachowski",
+        "ent::Many",
+        "ent::Robert Zemeckis"
+      ],
+      "newly_retrieved_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ]
+      ],
+      "retrieval_score": 0.1750920906662941,
+      "token_count": 112
+    },
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "ent::The Dark Knight",
+        "ent::Christopher Nolan",
+        "ent::Lana Wachowski",
+        "ent::Many",
+        "ent::Robert Zemeckis",
+        "ent::Inception",
+        "ent::United Kingdom",
+        "ent::Interstellar",
+        "ent::Bram Stoker",
+        "ent::Mary Shelley",
+        "ent::The Matrix",
+        "ent::Some",
+        "ent::Forrest Gump"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::Lana Wachowski",
+          "ent::The Matrix"
+        ],
+        [
+          "ent::Many",
+          "ent::Some"
+        ],
+        [
+          "ent::Robert Zemeckis",
+          "ent::Forrest Gump"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "EXPAND",
+      "action_target": [],
+      "newly_retrieved_nodes": [
+        "ent::Inception",
+        "ent::United Kingdom",
+        "ent::Interstellar",
+        "ent::Bram Stoker",
+        "ent::Mary Shelley",
+        "ent::The Matrix",
+        "ent::Some",
+        "ent::Forrest Gump"
+      ],
+      "newly_retrieved_edges": [
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::Lana Wachowski",
+          "ent::The Matrix"
+        ],
+        [
+          "ent::Many",
+          "ent::Some"
+        ],
+        [
+          "ent::Robert Zemeckis",
+          "ent::Forrest Gump"
+        ]
+      ],
+      "retrieval_score": 0.0,
+      "token_count": 259
+    },
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "ent::The Dark Knight",
+        "ent::Christopher Nolan",
+        "ent::Lana Wachowski",
+        "ent::Many",
+        "ent::Robert Zemeckis",
+        "ent::Inception",
+        "ent::United Kingdom",
+        "ent::Interstellar",
+        "ent::Bram Stoker",
+        "ent::Mary Shelley",
+        "ent::The Matrix",
+        "ent::Some",
+        "ent::Forrest Gump"
+      ],
+      "evidence_edges": [
+        [
+          "ent::Christopher Nolan",
+          "ent::The Dark Knight"
+        ],
+        [
+          "ent::The Dark Knight",
+          "ent::Christopher Nolan"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Inception"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::United Kingdom"
+        ],
+        [
+          "ent::Christopher Nolan",
+          "ent::Interstellar"
+        ],
+        [
+          "ent::Lana Wachowski",
+          "ent::The Matrix"
+        ],
+        [
+          "ent::Many",
+          "ent::Some"
+        ],
+        [
+          "ent::Robert Zemeckis",
+          "ent::Forrest Gump"
+        ]
+      ],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "STOP",
+      "action_target": [],
+      "newly_retrieved_nodes": [],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 0.0,
+      "token_count": 259
+    }
+  ],
+  "final_answer": "Christopher Nolan",
+  "final_evidence": [
+    "ent::The Dark Knight",
+    "ent::Christopher Nolan",
+    "ent::Lana Wachowski",
+    "ent::Many",
+    "ent::Robert Zemeckis",
+    "ent::Inception",
+    "ent::United Kingdom",
+    "ent::Interstellar",
+    "ent::Bram Stoker",
+    "ent::Mary Shelley",
+    "ent::The Matrix",
+    "ent::Some",
+    "ent::Forrest Gump"
+  ],
+  "total_cost": {
+    "nodes": 13,
+    "edges": 8,
+    "tokens": 259,
+    "retrieval_calls": 2,
+    "iterations": 3
+  },
+  "stop_reason": "fixed_hops_done",
+  "metadata": {}
+}

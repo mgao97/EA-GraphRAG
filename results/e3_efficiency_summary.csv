@@ -1,0 +1,7 @@
+method,n,em,f1,avg_nodes,avg_edges,avg_tokens,avg_retrieval_calls,avg_iterations,on_pareto_frontier
+fixed_hop_1,20,0.75,0.925,9.75,9.0,206.6,2.0,3.0,True
+fixed_hop_2,20,0.75,0.925,12.95,9.0,270.95,2.0,3.0,False
+fixed_hop_3,20,0.75,0.925,14.5,9.0,302.5,2.0,3.0,False
+fixed_hop_4,20,0.75,0.925,15.15,9.0,313.4,2.0,3.0,False
+graphrag,20,0.75,0.925,12.95,9.0,270.95,2.0,3.0,False
+ea_graphrag,20,0.75,0.925,20.95,22.35,413.8,5.3,6.3,False

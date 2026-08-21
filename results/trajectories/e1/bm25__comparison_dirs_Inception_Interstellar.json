@@ -1,0 +1,85 @@
+{
+  "qid": "comparison_dirs_Inception_Interstellar",
+  "question": "Which director directed both Inception and Interstellar?",
+  "gold_answer": "Christopher Nolan",
+  "method": "bm25",
+  "steps": [
+    {
+      "step": 0,
+      "evidence_nodes": [
+        "passage::6",
+        "passage::7",
+        "passage::21",
+        "passage::20",
+        "passage::19"
+      ],
+      "evidence_edges": [],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 1.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "RETRIEVE",
+      "action_target": [
+        "Article about Inception",
+        "Article about Interstellar",
+        "Article about Interstellar",
+        "Article about Forrest Gump",
+        "Article about Pulp Fiction"
+      ],
+      "newly_retrieved_nodes": [
+        "passage::6",
+        "passage::7",
+        "passage::21",
+        "passage::20",
+        "passage::19"
+      ],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 5.300781322396686,
+      "token_count": 152
+    },
+    {
+      "step": 1,
+      "evidence_nodes": [
+        "passage::6",
+        "passage::7",
+        "passage::21",
+        "passage::20",
+        "passage::19"
+      ],
+      "evidence_edges": [],
+      "semantic_score": 0.0,
+      "structural_gain": 0.0,
+      "structural_entropy": 0.0,
+      "reasoning_coverage": 0.0,
+      "consistency_score": 0.0,
+      "sufficiency_score": 0.0,
+      "sufficient": false,
+      "action": "STOP",
+      "action_target": [],
+      "newly_retrieved_nodes": [],
+      "newly_retrieved_edges": [],
+      "retrieval_score": 0.0,
+      "token_count": 0
+    }
+  ],
+  "final_answer": "Christopher Nolan",
+  "final_evidence": [
+    "passage::6",
+    "passage::7",
+    "passage::21",
+    "passage::20",
+    "passage::19"
+  ],
+  "total_cost": {
+    "nodes": 5,
+    "edges": 0,
+    "tokens": 152,
+    "retrieval_calls": 1,
+    "iterations": 2
+  },
+  "stop_reason": "bm25_topk_done",
+  "metadata": {}
+}

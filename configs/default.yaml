@@ -1,0 +1,73 @@
+project:
+  name: EA-GraphRAG
+  phase: 1
+  seed: 42
+  results_dir: results
+  log_dir: logs
+dataset:
+  name: synthetic
+  path: data/raw/hotpot_train_v1.1.json
+  synthetic_path: data/sample_hotpotqa.json
+  limit: 100
+graph:
+  build_from: contexts
+  min_entity_len: 2
+  max_entities_per_passage: 16
+embedding:
+  backend: dummy
+  model: null
+  dim: 256
+  cache_dir: .cache/embeddings
+  base_url: null
+  api_key_env: OPENAI_API_KEY
+llm:
+  backend: dummy
+  provider: null
+  model: null
+  temperature: 0.0
+  base_url: null
+  api_key: null
+  max_tokens: 512
+controller:
+  type: eac
+  max_iterations: 6
+  sufficiency:
+    tau_sem: 0.2
+    tau_reason: 0.66
+    tau_cons: 0.85
+    marginal_gain_threshold: 0.02
+  weights:
+    semantic: 0.3
+    structural: 0.2
+    reasoning: 0.4
+    consistency: 0.1
+  ablation:
+    use_semantic: true
+    use_structural: true
+    use_reasoning: true
+    use_consistency: true
+retrieval:
+  top_k_retrieve: 5
+  expand_hops: 2
+  bridge_max_hops: 3
+baselines:
+  fixed_hops:
+  - 1
+  - 2
+  - 3
+  - 4
+  include:
+  - bm25
+  - fixed_hop_1
+  - fixed_hop_2
+  - fixed_hop_3
+  - fixed_hop_4
+  - graphrag
+  - react_graphrag
+  - ea_graphrag
+experiments:
+  phase1:
+  - e1
+  - e3
+  - e5
+  - e7

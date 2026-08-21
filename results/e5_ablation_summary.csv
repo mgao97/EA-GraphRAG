@@ -1,0 +1,6 @@
+method,n,em,f1,avg_nodes,avg_edges,avg_tokens,avg_retrieval_calls,avg_iterations,delta_f1_vs_full,cost_increase
+ea_graphrag,20,0.75,0.925,20.95,22.35,413.8,5.3,6.3,0.0,
+ea_graphrag_ablated_semantic,20,0.75,0.925,20.95,22.35,413.8,5.3,6.3,0.0,
+ea_graphrag_ablated_structural,20,0.75,0.925,20.95,22.35,413.8,5.3,6.3,0.0,
+ea_graphrag_ablated_reasoning,20,0.75,0.925,20.95,22.35,413.8,5.3,6.3,0.0,
+ea_graphrag_ablated_consistency,20,0.75,0.925,20.95,22.35,413.8,5.3,6.3,0.0,

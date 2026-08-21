@@ -1,0 +1,13 @@
+method,hop_bucket,n,em,f1,avg_tokens,avg_iterations
+fixed_hop_1,2-hop,15,0.6667,0.9,190.67,3.0
+fixed_hop_1,1-hop,5,1.0,1.0,254.4,3.0
+fixed_hop_2,2-hop,15,0.6667,0.9,245.47,3.0
+fixed_hop_2,1-hop,5,1.0,1.0,347.4,3.0
+fixed_hop_3,2-hop,15,0.6667,0.9,287.53,3.0
+fixed_hop_3,1-hop,5,1.0,1.0,347.4,3.0
+fixed_hop_4,2-hop,15,0.6667,0.9,302.07,3.0
+fixed_hop_4,1-hop,5,1.0,1.0,347.4,3.0
+graphrag,2-hop,15,0.6667,0.9,245.47,3.0
+graphrag,1-hop,5,1.0,1.0,347.4,3.0
+ea_graphrag,2-hop,15,0.6667,0.9,416.33,6.47
+ea_graphrag,1-hop,5,1.0,1.0,406.2,5.8

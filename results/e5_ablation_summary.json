@@ -1,0 +1,62 @@
+{
+  "ea_graphrag": {
+    "em": 0.75,
+    "f1": 0.925,
+    "n": 20,
+    "cost": {
+      "nodes": 419,
+      "edges": 447,
+      "tokens": 8276,
+      "retrieval_calls": 106
+    },
+    "elapsed_sec": 0.3324239253997803
+  },
+  "ea_graphrag_ablated_semantic": {
+    "em": 0.75,
+    "f1": 0.925,
+    "n": 20,
+    "cost": {
+      "nodes": 419,
+      "edges": 447,
+      "tokens": 8276,
+      "retrieval_calls": 106
+    },
+    "elapsed_sec": 0.3308119773864746
+  },
+  "ea_graphrag_ablated_structural": {
+    "em": 0.75,
+    "f1": 0.925,
+    "n": 20,
+    "cost": {
+      "nodes": 419,
+      "edges": 447,
+      "tokens": 8276,
+      "retrieval_calls": 106
+    },
+    "elapsed_sec": 0.3302009105682373
+  },
+  "ea_graphrag_ablated_reasoning": {
+    "em": 0.75,
+    "f1": 0.925,
+    "n": 20,
+    "cost": {
+      "nodes": 419,
+      "edges": 447,
+      "tokens": 8276,
+      "retrieval_calls": 106
+    },
+    "elapsed_sec": 0.3303108215332031
+  },
+  "ea_graphrag_ablated_consistency": {
+    "em": 0.75,
+    "f1": 0.925,
+    "n": 20,
+    "cost": {
+      "nodes": 419,
+      "edges": 447,
+      "tokens": 8276,
+      "retrieval_calls": 106
+    },
+    "elapsed_sec": 0.33126211166381836
+  }
+}
