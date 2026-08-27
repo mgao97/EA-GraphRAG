@@ -23,14 +23,14 @@ embedding:
   model: nomic-embed-text
   dim: 768
   cache_dir: .cache/embeddings
-  base_url: http://127.0.0.1:11434/v1
+  base_url: http://127.0.0.1:11435/v1
   api_key_env: OPENAI_API_KEY
 llm:
   backend: ollama
   provider: ollama
   model: qwen2.5:14b
   temperature: 0.0
-  base_url: http://127.0.0.1:11434/v1
+  base_url: http://127.0.0.1:11435/v1
   api_key: ollama
   max_tokens: 512
 controller:

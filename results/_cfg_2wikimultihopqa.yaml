@@ -5,18 +5,14 @@ project:
   results_dir: results
   log_dir: logs
 dataset:
-  name: hotpotqa
+  name: 2wikimultihopqa
   path: data/raw/hotpot_dev_v1.1.json
   synthetic_path: data/sample_hotpotqa.json
-  limit: 200
+  limit: 50
 graph:
   build_from: contexts
   min_entity_len: 2
   max_entities_per_passage: 16
-  # Degree-based graph pruning (hub removal). Entity nodes whose degree exceeds
-  # this threshold are removed at build time, breaking the dense cliques formed
-  # by shared-entity bridge edges. Titles (retrieval targets) are kept. Set 0 to
-  # disable. This is an optimisation of the EA-GraphRAG retrieval graph.
   max_degree: 100
 embedding:
   backend: ollama
@@ -55,9 +51,6 @@ retrieval:
   top_k_retrieve: 5
   expand_hops: 2
   bridge_max_hops: 3
-  # Beam width for EXPAND (graph-pruning / best-first expansion). Each hop keeps
-  # only the top-k most query-relevant neighbours instead of the full BFS
-  # neighbourhood, bounding the evidence set size. Set 0 for unbounded (legacy).
   max_nodes_per_hop: 30
 baselines:
   fixed_hops:
@@ -75,14 +68,11 @@ baselines:
   - react_graphrag
   - ea_graphrag
   - oracle
-# Cross-dataset generalisation (E8). Each entry names a dataset and its path;
-# the runner loads it via load_hotpotqa-style loaders and reuses the same
-# graph/method build pipeline.
 cross_datasets:
-  - name: 2wikimultihopqa
-    path: data/raw/2wikimultihopqa/questions.json
-  - name: musique
-    path: data/raw/musique/questions.json
+- name: 2wikimultihopqa
+  path: data/raw/2wikimultihopqa/questions.json
+- name: musique
+  path: data/raw/musique/questions.json
 experiments:
   phase1:
   - e1

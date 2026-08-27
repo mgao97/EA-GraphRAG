@@ -1,0 +1,116 @@
+# Config for EA-GraphRAG to call an already-running local LLM service.
+#
+# NOTE ON BACKEND
+# ---------------
+# This machine's NVIDIA driver only supports CUDA 12.4.  The prebuilt
+# SGLang/vLLM kernels require CUDA 13, so SGLang cannot run here.  We use
+# **Ollama** instead: it ships a self-contained CUDA runtime that works on
+# this driver and exposes an OpenAI-compatible endpoint at
+# http://127.0.0.1:11434/v1, which EA-GraphRAG calls natively.
+#
+# The deployment is owned by this project and lives under ``deploy/``:
+#   - deploy/start_ollama.sh  — start the server + pull the model
+#   - deploy/status_ollama.sh — health check + inference probe
+#
+# EA-GraphRAG does NOT load weights directly; it only needs the endpoint above.
+#   base_url = http://127.0.0.1:11434/v1
+#   model    = the Ollama tag you pulled (e.g. "qwen2.5:14b")
+#
+# Embedding backend: "ollama" uses the locally-served nomic-embed-text model
+#                    via Ollama's OpenAI-compatible /embeddings endpoint
+#                    (768-dim).  Requires Ollama running on :11434 with the
+#                    nomic-embed-text model pulled.  The old "dummy" backend
+#                    (deterministic 256-dim hashed n-gram embedder) can be
+#                    restored by setting backend: dummy.
+#
+# Usage:
+#     1. Start Ollama (owned by this repo):
+#            bash deploy/start_ollama.sh
+#        or, for a specific model:
+#            MODEL=qwen2.5:14b bash deploy/start_ollama.sh
+#
+#     2. Smoke-test the server:
+#            bash deploy/status_ollama.sh
+#
+#     3. Run EA-GraphRAG against that endpoint:
+#            cd /home/user/GSK/mgao/EA-GraphRAG
+#            PYTHONNOUSERSITE=1 PYTHONPATH=. /home/user/.conda/envs/grag/bin/python scripts/runner.py \
+#                --config configs/local_sglang_qwen35.yaml \
+#                --methods bm25 fixed_hop_2 ea_graphrag \
+#                --experiment e1 \
+#                --output results/e1_ollama_qwen2.5_14b.csv \
+#                --n_questions 30
+#
+#        Or the full HotpotQA pipeline via ./run.sh:
+#            cd /home/user/GSK/mgao/EA-GraphRAG
+#            export PYTHONNOUSERSITE=1
+#            ./run.sh --config configs/local_sglang_qwen35.yaml \
+#                     --with-real-data --n 200
+
+project:
+  name: EA-GraphRAG-sglang-qwen35
+  phase: 1
+  seed: 42
+  results_dir: results
+  log_dir: logs
+
+dataset:
+  name: hotpotqa
+  path: data/raw/hotpot_train_v1.1.json
+  synthetic_path: data/sample_hotpotqa.json
+  limit: 200
+
+graph:
+  build_from: contexts
+  min_entity_len: 2
+  max_entities_per_passage: 16
+
+embedding:
+  backend: ollama
+  model: nomic-embed-text
+  dim: 768
+  cache_dir: .cache/embeddings
+  base_url: http://127.0.0.1:11434/v1
+  api_key_env: OPENAI_API_KEY
+
+llm:
+  backend: openai
+  provider: ollama
+  # Ollama needs an explicit model tag (no "auto" discovery like SGLang).
+  # Use the tag you pulled, e.g. "qwen2.5:14b".
+  model: qwen2.5:14b
+  auto_discover_model: false
+  temperature: 0.0
+  max_tokens: 512
+  base_url: http://127.0.0.1:11434/v1
+
+controller:
+  type: eac
+  max_iterations: 6
+  sufficiency:
+    tau_sem: 0.55
+    tau_reason: 0.66
+    tau_cons: 0.85
+    marginal_gain_threshold: 0.02
+  weights:
+    semantic: 0.3
+    structural: 0.2
+    reasoning: 0.4
+    consistency: 0.1
+  ablation:
+    use_semantic: true
+    use_structural: true
+    use_reasoning: true
+    use_consistency: true
+
+retrieval:
+  top_k_retrieve: 10
+  expand_hops: 2
+  bridge_max_hops: 3
+
+baselines:
+  fixed_hops: [1, 2, 3, 4]
+  include: ["bm25", "fixed_hop_1", "fixed_hop_2", "fixed_hop_3", "fixed_hop_4", "graphrag", "react_graphrag", "ea_graphrag"]
+
+experiments:
+  phase1: ["e1", "e3", "e5", "e7"]

@@ -22,7 +22,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$HERE"
 
 CONDA_ENV="${CONDA_ENV:-grag}"
-N_QUESTIONS="${N_QUESTIONS:-30}"
+N_QUESTIONS="${N_QUESTIONS:-200}"
 SKIP_TESTS="${SKIP_TESTS:-0}"
 SKIP_FIGURES="${SKIP_FIGURES:-0}"
 WITH_REAL=0
@@ -33,6 +33,7 @@ usage() {
   exit 0
 }
 
+DATASET=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --skip-tests)      SKIP_TESTS=1; shift ;;
@@ -41,9 +42,24 @@ while [[ $# -gt 0 ]]; do
     --config)          CONFIG="$2"; shift 2 ;;
     --n|--n-questions) N_QUESTIONS="$2"; shift 2 ;;
     -h|--help)         usage ;;
-    *) echo "Unknown argument: $1" >&2; usage ;;
+    *) DATASET="$1"; shift ;;   # first positional = dataset name
   esac
 done
+
+if [[ -n "$DATASET" && "$DATASET" != "musique" && "$DATASET" != "2wikimultihopqa" && "$DATASET" != "hotpotqa" ]]; then
+  echo "ERROR: dataset must be one of: musique | 2wikimultihopqa | hotpotqa (got '$DATASET')" >&2
+  exit 2
+fi
+
+if [[ "${CONFIG}" = /* ]]; then
+  CONFIG_PATH="${CONFIG}"
+else
+  CONFIG_PATH="${HERE}/${CONFIG}"
+fi
+if [[ ! -f "${CONFIG_PATH}" ]]; then
+  echo "ERROR: config file not found: ${CONFIG_PATH}" >&2
+  exit 1
+fi
 
 # ----------------------------------------------------------------------
 # 0. Locate conda.
@@ -96,9 +112,12 @@ PY
 # quirks (e.g. with `set -e` and subprocess streaming).
 VENV_RUN() { "$CONDA_PY" "$@"; }
 
+export PYTHONNOUSERSITE=1
 export PYTHONPATH="$HERE:${PYTHONPATH:-}"
 export MPLCONFIGDIR="$HERE/.cache/matplotlib"
 mkdir -p "$MPLCONFIGDIR"
+ACTIVE_CONFIG="$(mktemp "${MPLCONFIGDIR}/run_config.XXXXXX.yaml")"
+trap 'rm -f "${ACTIVE_CONFIG}"' EXIT
 
 # ----------------------------------------------------------------------
 # 2. Unit tests + sanity check.
@@ -119,46 +138,68 @@ if [[ "$WITH_REAL" -eq 0 ]]; then
     echo "==> Generating synthetic HotpotQA-style data (n=$N_QUESTIONS)"
     VENV_RUN scripts/build_sample_data.py --output data/sample_hotpotqa.json --n "$N_QUESTIONS"
   fi
-  VENV_RUN - <<'PY'
-import yaml, pathlib
-p = pathlib.Path("configs/default.yaml")
+  SRC_CONFIG="${CONFIG_PATH}" DST_CONFIG="${ACTIVE_CONFIG}" VENV_RUN - <<'PY'
+import os
+import yaml
+from pathlib import Path
+
+p = Path(os.environ["SRC_CONFIG"])
+out = Path(os.environ["DST_CONFIG"])
 cfg = yaml.safe_load(p.read_text())
 cfg["dataset"]["name"] = "synthetic"
 cfg["dataset"]["synthetic_path"] = "data/sample_hotpotqa.json"
-p.write_text(yaml.safe_dump(cfg, sort_keys=False))
+out.write_text(yaml.safe_dump(cfg, sort_keys=False))
 PY
   DATASET_PATH="data/sample_hotpotqa.json"
   SYNTH_FLAG="--synthetic"
 else
-  if [[ ! -f data/raw/hotpot_train_v1.1.json ]]; then
-    echo "ERROR: --with-real-data requested but data/raw/hotpot_train_v1.1.json not found." >&2
-    echo "       Run first:  conda run -n $CONDA_ENV python scripts/download_hotpotqa.py --split train" >&2
+  # Fair comparison: use the SAME HotpotQA dev split as the baselines
+  # (baseline/* evaluate on data/raw/hotpot_dev_v1.1.json, n=200).
+  REAL_PATH="data/raw/hotpot_dev_v1.1.json"
+  if [[ ! -f "$REAL_PATH" ]]; then
+    echo "ERROR: --with-real-data requested but $REAL_PATH not found." >&2
+    echo "       Make sure data/raw/hotpot_dev_v1.1.json exists (used by baselines too)." >&2
     exit 2
   fi
-  VENV_RUN - <<'PY'
-import yaml, pathlib
-p = pathlib.Path("configs/default.yaml")
+  SRC_CONFIG="${CONFIG_PATH}" DST_CONFIG="${ACTIVE_CONFIG}" VENV_RUN - <<'PY'
+import os
+import yaml
+from pathlib import Path
+
+p = Path(os.environ["SRC_CONFIG"])
+out = Path(os.environ["DST_CONFIG"])
 cfg = yaml.safe_load(p.read_text())
 cfg["dataset"]["name"] = "hotpotqa"
-cfg["dataset"]["path"] = "data/raw/hotpot_train_v1.1.json"
-p.write_text(yaml.safe_dump(cfg, sort_keys=False))
+cfg["dataset"]["path"] = "data/raw/hotpot_dev_v1.1.json"
+out.write_text(yaml.safe_dump(cfg, sort_keys=False))
 PY
-  DATASET_PATH="data/raw/hotpot_train_v1.1.json"
+  DATASET_PATH="$REAL_PATH"
   SYNTH_FLAG=""
 fi
 
 # ----------------------------------------------------------------------
-# 4. Build the unified knowledge graph.
+# 4. Build the unified knowledge graph (skipped when evaluating on a
+#    per-dataset corpus: run_phase1 builds the KG from the shared corpus).
 # ----------------------------------------------------------------------
-echo "==> Building knowledge graph"
-VENV_RUN scripts/build_graph.py --dataset "$DATASET_PATH" \
-    --output data/graph.json $SYNTH_FLAG --limit "${N_QUESTIONS}"
+if [[ -n "$DATASET" ]]; then
+  echo "==> Dataset '$DATASET': graph will be built from the shared per-dataset corpus inside run_phase1."
+else
+  echo "==> Building knowledge graph"
+  VENV_RUN scripts/build_graph.py --dataset "$DATASET_PATH" \
+      --output data/graph.json $SYNTH_FLAG --limit "${N_QUESTIONS}"
+fi
 
 # ----------------------------------------------------------------------
 # 5. Run the four Phase 1 experiments.
 # ----------------------------------------------------------------------
 echo "==> Running Phase 1 experiments (E1, E3, E5, E7)"
-VENV_RUN scripts/run_phase1.py --config "$CONFIG" --n_questions "$N_QUESTIONS"
+if [[ -n "$DATASET" ]]; then
+  echo "==> Dataset mode: $DATASET (n=$N_QUESTIONS)"
+  VENV_RUN scripts/run_phase1.py --config "$ACTIVE_CONFIG" --n_questions "$N_QUESTIONS" --dataset "$DATASET"
+else
+  echo "==> Effective config: ${CONFIG_PATH}"
+  VENV_RUN scripts/run_phase1.py --config "$ACTIVE_CONFIG" --n_questions "$N_QUESTIONS"
+fi
 
 # ----------------------------------------------------------------------
 # 6. Summarise + figures.

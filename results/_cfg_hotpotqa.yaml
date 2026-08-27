@@ -1,50 +1,39 @@
-# Copy of configs/default.yaml with Ollama-friendly defaults.
-#
-# Usage:
-#     1. Start Ollama:        ollama serve
-#     2. Pull models:         ollama pull qwen2.5:7b && ollama pull nomic-embed-text
-#     3. Run:                 PYTHONPATH=. python scripts/run_phase1.py --config configs/local.yaml
-#
-# Switch to hosted OpenAI: set llm.provider: openai + OPENAI_API_KEY in env.
-
 project:
-  name: EA-GraphRAG-local
+  name: EA-GraphRAG
   phase: 1
   seed: 42
   results_dir: results
   log_dir: logs
-
 dataset:
   name: hotpotqa
-  path: data/raw/hotpot_train_v1.1.json
+  path: data/raw/hotpot_dev_v1.1.json
   synthetic_path: data/sample_hotpotqa.json
-  limit: 200
-
+  limit: 50
 graph:
   build_from: contexts
   min_entity_len: 2
   max_entities_per_passage: 16
-
+  max_degree: 100
 embedding:
-  backend: openai
+  backend: ollama
   model: nomic-embed-text
-  base_url: http://localhost:11434/v1
-  api_key_env: OPENAI_API_KEY
+  dim: 768
   cache_dir: .cache/embeddings
-
+  base_url: http://127.0.0.1:11434/v1
+  api_key_env: OPENAI_API_KEY
 llm:
-  backend: openai
+  backend: ollama
   provider: ollama
   model: qwen2.5:14b
   temperature: 0.0
-  base_url: http://localhost:11434/v1
+  base_url: http://127.0.0.1:11434/v1
+  api_key: ollama
   max_tokens: 512
-
 controller:
   type: eac
   max_iterations: 6
   sufficiency:
-    tau_sem: 0.55
+    tau_sem: 0.2
     tau_reason: 0.66
     tau_cons: 0.85
     marginal_gain_threshold: 0.02
@@ -58,15 +47,36 @@ controller:
     use_structural: true
     use_reasoning: true
     use_consistency: true
-
 retrieval:
   top_k_retrieve: 5
   expand_hops: 2
   bridge_max_hops: 3
-
+  max_nodes_per_hop: 30
 baselines:
-  fixed_hops: [1, 2, 3, 4]
-  include: ["fixed_hop_1", "fixed_hop_2", "fixed_hop_3", "graphrag", "react_graphrag", "ea_graphrag"]
-
+  fixed_hops:
+  - 1
+  - 2
+  - 3
+  - 4
+  include:
+  - bm25
+  - fixed_hop_1
+  - fixed_hop_2
+  - fixed_hop_3
+  - fixed_hop_4
+  - graphrag
+  - react_graphrag
+  - ea_graphrag
+  - oracle
+cross_datasets:
+- name: 2wikimultihopqa
+  path: data/raw/2wikimultihopqa/questions.json
+- name: musique
+  path: data/raw/musique/questions.json
 experiments:
-  phase1: ["e1", "e3", "e5", "e7"]
+  phase1:
+  - e1
+  - e3
+  - e5
+  - e7
+  - e8
