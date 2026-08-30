@@ -33,8 +33,8 @@ def main() -> None:
     # Point at the EA method only.
     methods = [method]
     experiment = "e1"
-    out = f"results/ea_only_{dataset}.csv"
-    traj = f"logs/traj_ea_only_{dataset}"
+    out = f"results/{method}_{dataset}_minimax.csv"
+    traj = f"logs/traj_{method}_{dataset}"
 
     # Override the dataset name from the CLI so the runner loads the correct
     # questions file (the YAML may hard-code a different dataset.name).

@@ -1,12 +1,16 @@
+# EA-GraphRAG config: LLM via local vLLM (Qwen2.5-14B-Instruct-1M, :30000),
+# embedding via local Ollama (nomic-embed-text, :11434).
+# Mirrors configs/minimax.yaml except the LLM backend, so results are directly
+# comparable (API: MiniMax-M3 vs local: Qwen2.5-14B).
 project:
-  name: EA-GraphRAG
+  name: EA-GraphRAG-vllm-qwen14b
   phase: 1
   seed: 42
   results_dir: results
   log_dir: logs
 dataset:
-  name: hotpotqa
-  path: data/raw/hotpot_dev_v1.1.json
+  name: hotpotqa_sample
+  path: data/raw/hotpotqa_sample/questions.json
   synthetic_path: data/sample_hotpotqa.json
   limit: 50
 graph:
@@ -15,19 +19,20 @@ graph:
   max_entities_per_passage: 16
   max_degree: 100
 embedding:
-  backend: ollama
-  model: nomic-embed-text
-  dim: 768
+  backend: openai
+  model: text-embedding-3-small
+  dim: 1536
   cache_dir: .cache/embeddings
-  base_url: http://127.0.0.1:11434/v1
+  base_url: http://127.0.0.1:30001/v1
   api_key_env: OPENAI_API_KEY
 llm:
-  backend: ollama
-  provider: ollama
-  model: qwen2.5:14b
+  backend: openai
+  provider: openai
+  model: /data/llm/Qwen2.5-14B-Instruct-1M
   temperature: 0.0
-  base_url: http://127.0.0.1:11434/v1
-  api_key: ollama
+  base_url: http://127.0.0.1:30000/v1
+  api_key: minimax
+  auto_discover_model: false
   max_tokens: 512
 controller:
   type: eac
@@ -52,6 +57,7 @@ retrieval:
   expand_hops: 2
   bridge_max_hops: 3
   max_nodes_per_hop: 30
+  hop_prior: 5
 baselines:
   fixed_hops:
   - 1
@@ -59,24 +65,7 @@ baselines:
   - 3
   - 4
   include:
-  - bm25
-  - fixed_hop_1
-  - fixed_hop_2
-  - fixed_hop_3
-  - fixed_hop_4
-  - graphrag
-  - react_graphrag
   - ea_graphrag
-  - oracle
-cross_datasets:
-- name: 2wikimultihopqa
-  path: data/raw/2wikimultihopqa/questions.json
-- name: musique
-  path: data/raw/musique/questions.json
 experiments:
   phase1:
   - e1
-  - e3
-  - e5
-  - e7
-  - e8

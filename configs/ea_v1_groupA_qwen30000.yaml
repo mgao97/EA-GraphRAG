@@ -1,36 +1,41 @@
 project:
-  name: EA-GraphRAG
+  name: EA-GraphRAG-v1
   phase: 1
   seed: 42
   results_dir: results
   log_dir: logs
 dataset:
   name: musique
-  path: data/raw/hotpot_dev_v1.1.json
+  path: data/raw/musique/questions.json
   synthetic_path: data/sample_hotpotqa.json
-  limit: 50
+  limit: 200
 graph:
   build_from: contexts
   min_entity_len: 2
   max_entities_per_passage: 16
   max_degree: 100
 embedding:
-  backend: ollama
-  model: nomic-embed-text
-  dim: 768
+  # text-embedding-3-small served by bianxie.ai through the local proxy
+  # (minimax_proxy.py :30001, which forwards /v1/embeddings to bianxie.ai).
+  backend: openai
+  model: text-embedding-3-small
+  dim: 1536
   cache_dir: .cache/embeddings
-  base_url: http://127.0.0.1:11434/v1
-  api_key_env: OPENAI_API_KEY
+  base_url: http://127.0.0.1:30001/v1
+  api_key_env: BIANXIE_API_KEY
 llm:
-  backend: ollama
-  provider: ollama
-  model: qwen2.5:14b
+  backend: openai
+  provider: openai
+  model: /data/llm/Qwen2.5-14B-Instruct-1M
   temperature: 0.0
-  base_url: http://127.0.0.1:11434/v1
-  api_key: ollama
+  base_url: http://127.0.0.1:30000/v1
+  api_key: minimax
+  auto_discover_model: false
   max_tokens: 512
 controller:
   type: eac
+  # v1 prior: per-example max_iterations is overridden in EAGraphRAGV1Method
+  # using hop_count + 1. The value here is only a fallback ceiling.
   max_iterations: 6
   sufficiency:
     tau_sem: 0.2
@@ -48,6 +53,7 @@ controller:
     use_reasoning: true
     use_consistency: true
 retrieval:
+  # v1 compression: top_k_retrieve is decayed per-example by EAGraphRAGV1Method.
   top_k_retrieve: 5
   expand_hops: 2
   bridge_max_hops: 3
@@ -67,16 +73,13 @@ baselines:
   - graphrag
   - react_graphrag
   - ea_graphrag
+  - ea_graphrag_v1
   - oracle
 cross_datasets:
-- name: 2wikimultihopqa
-  path: data/raw/2wikimultihopqa/questions.json
-- name: musique
-  path: data/raw/musique/questions.json
+  - name: 2wikimultihopqa
+    path: data/raw/2wikimultihopqa/questions.json
+  - name: musique
+    path: data/raw/musique/questions.json
 experiments:
   phase1:
   - e1
-  - e3
-  - e5
-  - e7
-  - e8

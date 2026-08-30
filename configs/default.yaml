@@ -19,19 +19,25 @@ graph:
   # disable. This is an optimisation of the EA-GraphRAG retrieval graph.
   max_degree: 100
 embedding:
-  backend: ollama
-  model: nomic-embed-text
-  dim: 768
+  # Embeddings served by bianxie.ai (text-embedding-3-small) through the local
+  # proxy (minimax_proxy.py), which translates standard /v1/embeddings calls
+  # into bianxie.ai's chat/completions interface.
+  backend: openai
+  model: text-embedding-3-small
+  dim: 1536
   cache_dir: .cache/embeddings
-  base_url: http://127.0.0.1:11434/v1
-  api_key_env: OPENAI_API_KEY
+  base_url: http://127.0.0.1:30001/v1
+  api_key_env: BIANXIE_API_KEY
 llm:
-  backend: ollama
-  provider: ollama
-  model: qwen2.5:14b
+  # LLM served by MiniMax-M3 through the local proxy (minimax_proxy.py),
+  # which forwards /v1/chat/completions to the MiniMax /v1/responses API.
+  backend: api
+  provider: openai
+  model: MiniMax-M3
   temperature: 0.0
-  base_url: http://127.0.0.1:11434/v1
-  api_key: ollama
+  base_url: http://127.0.0.1:30001/v1
+  api_key: proxy-local
+  auto_discover_model: false
   max_tokens: 512
 controller:
   type: eac

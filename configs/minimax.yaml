@@ -1,53 +1,46 @@
-# Copy of configs/default.yaml with Ollama-friendly defaults.
-#
-# Usage:
-#     1. Start Ollama:        ollama serve
-#     2. Pull models:         ollama pull qwen2.5:7b && ollama pull nomic-embed-text
-#     3. Run:                 PYTHONPATH=. python scripts/run_phase1.py --config configs/local.yaml
-#
-# Switch to hosted OpenAI: set llm.provider: openai + OPENAI_API_KEY in env.
-
 project:
-  name: EA-GraphRAG-local
+  name: EA-GraphRAG
   phase: 1
   seed: 42
   results_dir: results
   log_dir: logs
-
 dataset:
   name: hotpotqa
-  path: data/raw/hotpot_train_v1.1.json
+  path: data/raw/hotpotqa/questions.json
   synthetic_path: data/sample_hotpotqa.json
-  limit: 200
-
+  limit: 50
 graph:
   build_from: contexts
   min_entity_len: 2
   max_entities_per_passage: 16
-
+  # Degree-based graph pruning (hub removal). Set 0 to disable.
+  max_degree: 100
 embedding:
   # text-embedding-3-small served by bianxie.ai through the local proxy
   # (minimax_proxy.py :30001, which forwards /v1/embeddings to bianxie.ai).
+  # LLM (everything else) uses MiniMax-M3 via the same proxy.
   backend: openai
   model: text-embedding-3-small
   dim: 1536
+  cache_dir: .cache/embeddings
   base_url: http://127.0.0.1:30001/v1
   api_key_env: BIANXIE_API_KEY
-  cache_dir: .cache/embeddings
-
+  api_key: minimax
 llm:
+  # MiniMax-M3 via local OpenAI-compatible proxy (minimax_proxy.py on :30001)
   backend: openai
-  provider: ollama
-  model: qwen2.5:14b
+  provider: openai
+  model: MiniMax-M3
   temperature: 0.0
-  base_url: http://localhost:11434/v1
+  base_url: http://127.0.0.1:30001/v1
+  api_key: minimax
+  auto_discover_model: false
   max_tokens: 512
-
 controller:
   type: eac
   max_iterations: 6
   sufficiency:
-    tau_sem: 0.55
+    tau_sem: 0.2
     tau_reason: 0.66
     tau_cons: 0.85
     marginal_gain_threshold: 0.02
@@ -61,15 +54,23 @@ controller:
     use_structural: true
     use_reasoning: true
     use_consistency: true
-
 retrieval:
   top_k_retrieve: 5
   expand_hops: 2
   bridge_max_hops: 3
-
+  # Beam width for EXPAND (best-first expansion). 0 = unbounded.
+  max_nodes_per_hop: 30
+  # Dataset-level hop prior for EA-v1 budget compression (HotpotQA ~2-hop).
+  # NOT the per-question gold hop_count (fairness).
+  hop_prior: 5
 baselines:
-  fixed_hops: [1, 2, 3, 4]
-  include: ["fixed_hop_1", "fixed_hop_2", "fixed_hop_3", "graphrag", "react_graphrag", "ea_graphrag"]
-
+  fixed_hops:
+  - 1
+  - 2
+  - 3
+  - 4
+  include:
+  - ea_graphrag
 experiments:
-  phase1: ["e1", "e3", "e5", "e7"]
+  phase1:
+  - e1
