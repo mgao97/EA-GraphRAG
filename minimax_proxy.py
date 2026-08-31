@@ -133,6 +133,48 @@ def _extract_text(resp_json: dict) -> str:
     return resp_json.get("text", "")
 
 
+_THINK_RE = re.compile(r"<think>(.*?)</think>", re.DOTALL)
+
+
+def _strip_reasoning_from_response(raw: bytes) -> bytes:
+    """把 MiniMax-M3 的 <think>...</think> 推理块从 message.content 中剥离。
+
+    MiniMax-M3 是推理模型, 思考过程会和答案一起返回。多数 baseline(LightRAG /
+    GraphRAG / EA)直接把整个 content 当作预测答案, 导致 EM 被压到 0——实测
+    LightRAG hotpotqa 组B 剥离后 EM 0.000 -> 0.440, GraphRAG 0.000 -> 0.120。
+    这里在代理层统一剥离, 并把推理内容保留到标准 reasoning_content 字段,
+    需要 CoT 的方法仍可取用。流式响应在 chat_completions 里直接透传, 不处理。
+    """
+    try:
+        data = json.loads(raw)
+    except Exception:
+        return raw
+    changed = False
+    for ch in data.get("choices") or []:
+        if not isinstance(ch, dict):
+            continue
+        msg = ch.get("message")
+        if not isinstance(msg, dict):
+            continue
+        content = msg.get("content")
+        if not isinstance(content, str) or "<think>" not in content:
+            continue
+        mt = _THINK_RE.search(content)
+        if mt and "reasoning_content" not in msg:
+            msg["reasoning_content"] = mt.group(1).strip()
+        cleaned = _THINK_RE.sub("", content)
+        cleaned = re.sub(r"<think>.*$", "", cleaned, flags=re.DOTALL)
+        cleaned = re.sub(r"</?think>", "", cleaned).strip()
+        msg["content"] = cleaned
+        changed = True
+    if not changed:
+        return raw
+    try:
+        return json.dumps(data, ensure_ascii=False).encode()
+    except Exception:
+        return raw
+
+
 @app.post("/v1/chat/completions")
 async def chat_completions(req: Request):
     body = await req.json()
@@ -184,6 +226,8 @@ async def chat_completions(req: Request):
             media_type="application/json",
         )
     # MiniMax 官网返回标准 OpenAI chat/completions 格式，下游 openai SDK 直接解析。
+    # 先剥离 <think> 推理块，避免下游 baseline 把思考过程当成预测答案。
+    raw = _strip_reasoning_from_response(raw)
     return Response(content=raw, media_type="application/json")
 
 
