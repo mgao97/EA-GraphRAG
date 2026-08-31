@@ -25,7 +25,6 @@ embedding:
   cache_dir: .cache/embeddings
   base_url: http://127.0.0.1:30001/v1
   api_key_env: BIANXIE_API_KEY
-  api_key: minimax
 llm:
   # MiniMax-M3 via local OpenAI-compatible proxy (minimax_proxy.py on :30001)
   backend: openai
@@ -33,7 +32,6 @@ llm:
   model: MiniMax-M3
   temperature: 0.0
   base_url: http://127.0.0.1:30001/v1
-  api_key: minimax
   auto_discover_model: false
   max_tokens: 512
 controller:
